@@ -1,20 +1,28 @@
 from PIL import Image
-im = Image.open("0.jpg")
-pix = list(im.getdata())
+import pandas as pd
+import numpy as np
 
-pd = {}
-count = 1
-temp = 0
+Image.MAX_IMAGE_PIXELS = None
 
-for x in pix:
-    rgb = str(x)
-    rgb = rgb.replace(' ', '').replace('(', '').replace(')', '').replace(',', '')
+data = pd.read_csv("data_condensed.csv")
 
-    if(rgb not in pd):
-        pd[rgb] = count
+im = Image.open("img/" + data['new_filename'][0], 'r')
+
+entry = {}
+
+initial = 1
+id = 0
+
+for x in iter(im.getdata()):
+    if(x not in entry):
+        entry[x] = initial
     else:
-        temp = pd[rgb]
+        temp = entry[x]
         temp += 1
-        pd[rgb] = temp
+        entry[x] = temp
 
-print(pd)
+print(entry)
+print(data['genre'][0])
+print(data['style'][0])
+print(data['title'][0])
+print("img/" + data['new_filename'][0])
