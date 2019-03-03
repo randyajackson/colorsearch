@@ -22,15 +22,16 @@ for z in range(10):
     id = 0
 
     for x in iter(im.getdata()):
-        if(x not in fullDict):
-            fullDict[x] = initial
+        if(str(x) not in fullDict):
+            fullDict[str(x)] = initial
         else:
-            temp = fullDict[x]
+            temp = fullDict[str(x)]
             temp += 1
-            fullDict[x] = temp
+            fullDict[str(x)] = temp
 
     fullDict['genre'] = data['genre'][z]
     fullDict['style'] = data['style'][z]
     fullDict['title'] = data['title'][z]
     fullDict['fileName'] ="img/" + data['new_filename'][z]
-    print(fullDict)
+    result = pictures.insert_one(fullDict)
+    print(result)
