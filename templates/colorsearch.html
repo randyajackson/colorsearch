@@ -1,0 +1,71 @@
+{% load static %}
+{% load dictKey %}
+<html>
+    <head>
+            <link rel="icon" type="image/icon" href="{% static 'colorsearch/img/favicon.ico' %}" />
+            <meta property="og:image" content="{% static 'img/sscolorsearch.png' %}">
+            <meta property="og:image:type" content="image/png">
+            <meta property="og:image:width" content="1024">
+            <meta property="og:image:height" content="1024">
+            <meta name="title" content="Color Search">
+            <meta name="description" content="Search for pictures by RGB value">
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+            <script src="{% static 'colorsearch/js/iro/dist/iro.min.js' %}"></script>
+            <script src="{% static 'colorsearch/js/node_modules/screenfull/dist/screenfull.js' %}"></script>
+
+            <!-- Scripts for the color picker wheel and fullscreen function-->
+            <script src="{% static 'colorsearch/js/fullscreen.js' %}"></script>
+            <script src="{% static 'colorsearch/js/colorpicker.js' %}"></script>
+
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+            <link rel="stylesheet" href="{% static 'colorsearch/css/hover.css' %}">
+            <link rel="stylesheet" href="{% static 'colorsearch/css/main.css' %}">
+            
+    </head>
+<body>
+        <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <center>
+            <div id="colorWheel"></div>
+            <br>
+    <form action ='.' method = 'POST'>{% csrf_token %}
+        <input type ="text" name = "q" style="display: none"/>
+        <input type="submit" value="select color" class ="paging"/>
+    </form>
+    {% if q %}
+        <br>
+        <div class="square" style = "background-color: rgb{{q}};"><p>Showing results for: {{q}}</p></div>
+        <br>
+    {% endif %}
+    </center>
+    <div class="content">
+        <div class="grid">
+            {% for result in results %}
+            <a href= "https://www.art.com/asp/search_do.asp/_/posters.htm?searchstring={{result.artist}} {{result.title}}"><img src = "{% static 'colorsearch/img/art-com.jpg' %}" style= "width: 4em; height: 4em;"></a> 
+                <figure class="effect-milo">
+                    <img id="fullScreen" src = "{% static result.fileName %}" style="width:100%;height:100%;"></img>
+                    <figcaption>
+                        <div>
+                            <img src="{% static '/colorsearch/img/fs_icon.png' %}" class = "artcomlink"></img>
+                        </div>
+                        <h2>{{ result.title }}</h2>
+                        <p>Artist: {{ result.artist }}</p>
+                        {% if result.date != result.date %}
+                            <p>Date: Unknown</p>
+                        {% else %}
+                            <p>Date: {{ result.date }} </p>
+                        {% endif %}
+                        <p>Genre: {{ result.genre }}</p>
+                        <p>Style: {{ result.style }}</p>
+                        <p>Color: <b style="color: rgb{{q}}; size: 5px;">&#9724;</b> {{ q }}</p>
+                        <p>Occurences: {{ result.colors.0.value }}</p>
+
+                    </figcaption>
+                </figure>
+            {% endfor%}
+        </div>
+    </div>
+</body>
+</html>
