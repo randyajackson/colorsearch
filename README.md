@@ -3,7 +3,7 @@
 Color Search
 ____________
 
-Components used:
+Components used:\
 -Django\
 -MongoDB\
 -Python\
