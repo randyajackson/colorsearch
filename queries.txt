@@ -1,9 +1,0 @@
-db.art-data.find({"title": "Uriel"});
-
-db.art_full_info.find({} ,{ fileName: 1 }).sort( {"(215, 233, 235)": -1} )
-
-db.art_full_info.find({}, {"(215, 233, 235)": 1 }).sort( {"(215, 233, 235)": -1} )
-
-db.art_full_info.find({}, { "(215, 233, 235)" : { $exists: true } } )
-
-db.art_full_info.find( { "(215, 233, 235)" : { $exists: true } }, {fileName: 1, "(215, 233, 235)": 1} )
