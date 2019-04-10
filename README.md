@@ -12,7 +12,7 @@ Components used:\
 -Pymongo\
 -PIL\
 -Pandas\
--iro.js - the color wheel [https://iro.js.org/]\
+-iro.js - the color wheel [https://iro.js.org/]
 -screenfull.js - full screen functionality [ https://github.com/sindresorhus/screenfull.js/ ]\
 
 Dataset comes from:
@@ -25,14 +25,14 @@ If you had a room and you want a picture of a certain color, that is what this s
 
 I learned a lot about Django and MongoDB from the project.
 
-Complications with Django:
--Initial setup
+Complications with Django:\
+-Initial setup\
 -Using template tags (ended up not having to use this)\
 The template tags were used for getting RGB value from MongoDB and using that value as a key for obtaining other values within Django template.
 
-Complications with MongoDB:
--Originally thought that MongoDB worked like a hashtable, it does not (at all).
--Restructured the data multiple times for the RGB value and count
+Complications with MongoDB:\
+-Originally thought that MongoDB worked like a hashtable, it does not (at all).\
+-Restructured the data multiple times for the RGB value and count\
 
 First data structure attempt: {(0, 0, 0): 1 , (0, 1, 1): 2, fileName: 'test', ....}
 Bad return time, cannot use indexes.
