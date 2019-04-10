@@ -21,18 +21,18 @@ https://www.kaggle.com/c/painter-by-numbers/data
 First project using MongoDB and Django framework
 
 I tried to think of different ways to search for a picture.
-If you had a room and you want a picture of a certain color, that is what this search is for.\
+If you had a room and you want a picture of a certain color, that is what this search is for.
 
-I learned a lot about Django and MongoDB from the project.\
+I learned a lot about Django and MongoDB from the project.
 
-Complications with Django:\
--Initial setup\
+Complications with Django:
+-Initial setup
 -Using template tags (ended up not having to use this)\
-The template tags were used for getting RGB value from MongoDB and using that value as a key for obtaining other values within Django template.\
+The template tags were used for getting RGB value from MongoDB and using that value as a key for obtaining other values within Django template.
 
 Complications with MongoDB:
--Originally thought that MongoDB worked like a hashtable, it does not (at all).\
--Restructured the data multiple times for the RGB value and count\
+-Originally thought that MongoDB worked like a hashtable, it does not (at all).
+-Restructured the data multiple times for the RGB value and count
 
 First data structure attempt: {(0, 0, 0): 1 , (0, 1, 1): 2, fileName: 'test', ....}
 Bad return time, cannot use indexes.
