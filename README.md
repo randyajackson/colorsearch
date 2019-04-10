@@ -12,7 +12,7 @@ Components used:\
 -Pymongo\
 -PIL\
 -Pandas\
--iro.js - the color wheel [https://iro.js.org/]
+-iro.js - the color wheel [https://iro.js.org/]\
 -screenfull.js - full screen functionality [ https://github.com/sindresorhus/screenfull.js/ ]\
 
 Dataset comes from:
