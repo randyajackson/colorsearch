@@ -30,20 +30,20 @@ Complications with Django:\
 -Using template tags (ended up not having to use this)\
 The template tags were used for getting RGB value from MongoDB and using that value as a key for obtaining other values within Django template.\
 
-Complications with MongoDB:\
+Complications with MongoDB:
 -Originally thought that MongoDB worked like a hashtable, it does not (at all).\
 -Restructured the data multiple times for the RGB value and count\
 
-First data structure attempt: {(0, 0, 0): 1 , (0, 1, 1): 2, fileName: 'test', ....}\
-Bad return time, cannot use indexes.\
+First data structure attempt: {(0, 0, 0): 1 , (0, 1, 1): 2, fileName: 'test', ....}
+Bad return time, cannot use indexes.
 
-Second data structure attempt: {      {(0, 0, 0) : 1}, {(0, 1, 1): 2},...      }, fileName: 'test', ...}\
-I thought this would work better as it is a key/value combination.\
-Still did not return quickly and not able to index well.\
+Second data structure attempt: {      {(0, 0, 0) : 1}, {(0, 1, 1): 2},...      }, fileName: 'test', ...}
+I thought this would work better as it is a key/value combination.
+Still did not return quickly and not able to index well.
 
-Third data strucure attempt: {     [ {color: '(0, 0, 0)', value: 1}, ... ], fileName: 'test', ...}\
-Return times significantly dropped after this.\
-Allows for better indexing.\
+Third data strucure attempt: {     [ {color: '(0, 0, 0)', value: 1}, ... ], fileName: 'test', ...}
+Return times significantly dropped after this.
+Allows for better indexing.
 
 Another big problem was sorting by the number of occurences of the color in descending order.
 
