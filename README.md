@@ -32,7 +32,7 @@ The template tags were used for getting RGB value from MongoDB and using that va
 
 Complications with MongoDB:\
 -Originally thought that MongoDB worked like a hashtable, it does not (at all).\
--Restructured the data multiple times for the RGB value and count\
+-Restructured the data multiple times for the RGB value and count
 
 First data structure attempt: {(0, 0, 0): 1 , (0, 1, 1): 2, fileName: 'test', ....}
 Bad return time, cannot use indexes.
